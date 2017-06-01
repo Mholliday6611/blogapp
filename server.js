@@ -5,6 +5,7 @@
 	var bcrypt= require("bcrypt-nodejs")
 	var passport = require("passport")
 	var session = require("express-session")
+	var routes = require("./routes/routes")
 	var path = require("path")
 
 
@@ -13,21 +14,21 @@
 	app.use(bodyParser.urlencoded({
   	extended : true
   }));
-	
 	app.use(session)
-	app.set("view engine", "hbs");
-	app.set("views", path.join(__dirname, "app/views"));
-
 	app.use("/static", path.join(__dirname, "app/client"));
-
 	app.use(session({
 	secret : 'itsASecret',
 	resave : true,
 	saveUninitialized: true
 	}));
-
 	app.use(passport.initialize());
 	app.use(passport.session());
+
+
+	app.set("view engine", "hbs");
+	app.set("views", path.join(__dirname, "app/views"));
+
+	routes(app)
 
 
 	mongoose.connect("mongodb://localhost/user");
