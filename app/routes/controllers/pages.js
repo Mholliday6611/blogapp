@@ -43,4 +43,17 @@
 			});
 		},
 
+		post: function(req, res){
+			Post.findOne({"_id": req.query.p}, function(err, post){
+				if(err){
+					console.log(err):
+				} else {
+					res.render("post", {
+						current: post
+					});
+				}
+			})
+		}
+	}
+
 	module.exports = pages;
