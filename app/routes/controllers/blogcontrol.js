@@ -1,4 +1,4 @@
-	var Post = require("../../models/blogpost");
+	var Post = require("../../models/blogModel");
 
 	function today(){
 		var date = new Date();
@@ -71,7 +71,7 @@
 	 }
 
 	 function deleteBlogPost(req, res){
-	 	Post.remove({"_id": req.query.post}. function(err, post){
+	 	Post.remove({"_id": req.query.post}, function(err, post){
 	 		if(err){
 	 			console.log(err);
 	 		}else {

@@ -24,7 +24,7 @@
 			res.render("login");
 		},
 
-		singup: function(req, res){
+		signup: function(req, res){
 			auth({
 				name: req.body.username,
 				pass: req.body.password,
@@ -46,7 +46,7 @@
 		post: function(req, res){
 			Post.findOne({"_id": req.query.p}, function(err, post){
 				if(err){
-					console.log(err):
+					console.log(err)
 				} else {
 					res.render("post", {
 						current: post
