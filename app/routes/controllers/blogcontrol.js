@@ -60,7 +60,7 @@
 	  }
 
 	 function updateBlogPost(req, res){
-	 	post.update({"_id": req.query.id}, {$set: {"post": req.body.post.Body, "title": req.body.blogTitle}}, function(err, doc){
+	 	Post.update({"_id": req.query.id}, {$set: {"post": req.body.postBody, "title": req.body.blogTitle}}, function(err, doc){
 	 		console.log(doc);
 	 		if(err){
 	 			res.redirect("/index?update=fail");
